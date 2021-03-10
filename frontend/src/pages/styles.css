@@ -1,0 +1,71 @@
+.login{
+    background-image: url("background.jpg");
+    background-size: 1920px 1080px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100vw  !important;
+    height: 100vh !important;
+  
+  
+  }
+  
+  .login-inputright {
+  
+    background-color:  rgba(47, 92, 135, 0.604) !important;
+    width: 300px !important;
+    height: 400px !important;
+    border-radius: 0px !important;
+    z-index: 100 !important;
+  }
+  .login-inputleft {
+  
+    background-image: url("financeiro.jpg") !important ;
+    background-size: 800px 400px !important;
+    width: 800px !important;
+    height: 400px !important;
+    border-radius: 0px !important;
+    margin-left: -375px !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+  
+  .login-left h1{
+    display: flex !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Times, serif !important;
+    font-size: 25px !important;
+    color: rgb(252, 252, 252) !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  
+  .login-user{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 30% !important;
+    margin-left: 6%!important;
+    width: 90% !important;
+  }
+  
+  .login-senha{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 6% !important;
+    width: 90% !important;
+  }
+  .buttonlogin{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 6% !important;
+    width: 90% !important;
+    border: 2px solid white !important;
+  }
+  
+  .buttonlogin button {
+    color: white !important;
+    width: 100% !important;
+  }
