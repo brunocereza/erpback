@@ -1,10 +1,6 @@
-back_end/node_modules
-front_end/node_modules
-back_end/.env
-front_end/.env
-.editorconfig
 node_modules
+.env
 *.pdf
 *.csv
-
-
+yarn.lock
+package-lock.json
