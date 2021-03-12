@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const authConfig = require("../config/auth.json");
 
 module.exports = (req, res, next) => {
-    if (req.url !== "/usuario/autenticacao?e=public") {
+    if (req.url !== "/usuario/autenticacao") {
         let authHeader = "";
         if (!req.headers.token) {
             authHeader = req.query.t;

@@ -4,6 +4,9 @@ const authConfig = require("../../config/auth");
 const { PrismaClient } = require("@prisma/client");
 
 module.exports = {
+    async teste(req,res){
+        res.send("resposta");
+    },
     async salvar(req, res) {
         const { login, nome, senha } = req.body;
         const prisma = new PrismaClient({
