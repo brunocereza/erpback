@@ -7,10 +7,123 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Cliente {
+  id        Int       @id
+  status    Boolean
+  descricao String?   @db.VarChar(255)
+  data      DateTime? @db.Date
+  pessoa_id Int
+  pessoa    Pessoa    @relation(fields: [pessoa_id], references: [id])
+}
+
+model Contas_a_pagar {
+  id     Int       @id @default(autoincrement())
+  codigo Int?
+  data   DateTime? @db.Date
+}
+
+model Contas_a_receber {
+  id     Int       @id @default(autoincrement())
+  codigo Int?
+  data   DateTime? @db.Date
+}
+
+model Endereco {
+  id          Int      @id @default(autoincrement())
+  cep         String?  @db.VarChar(8)
+  logradouro  String?  @db.VarChar(255)
+  bairro      String?  @db.VarChar(255)
+  numero      String?  @db.VarChar(15)
+  complemento String?  @db.VarChar(500)
+  cidade      String?  @db.VarChar(100)
+  estado      String?  @db.VarChar(30)
+  Pessoa      Pessoa[]
+}
+
+model Estoque {
+  id     Int            @id @default(autoincrement())
+  codigo Int?
+  itens  Item_Estoque[]
+}
+
+model Fornecedor {
+  id        Int    @id @default(autoincrement())
+  codigo    Int?
+  pessoa_id Int
+  pessoa    Pessoa @relation(fields: [pessoa_id], references: [id])
+}
+
+model Item {
+  id                Int            @id @default(autoincrement())
+  nome              String         @db.VarChar(200)
+  quantidade        BigInt?
+  quantidade_minima BigInt?
+  valor             Decimal?       @db.Decimal(19, 2)
+  valor_unidade     Decimal?       @db.Decimal(19, 2)
+  valor_venda       Decimal?       @db.Decimal(19, 2)
+  valor_compra      Decimal?       @db.Decimal(19, 2)
+  itens             Item_Estoque[]
+}
+
+model Item_Estoque {
+  id         Int     @id @default(autoincrement())
+  item_id    Int
+  estoque_id Int
+  item       Item    @relation(fields: [item_id], references: [id])
+  estoque    Estoque @relation(fields: [estoque_id], references: [id])
+}
+
+model Ordem_Pagamento {
+  id     Int       @id @default(autoincrement())
+  codigo Int?
+  data   DateTime? @db.Date
+}
+
+model Ordem_Servico {
+  id     Int       @id @default(autoincrement())
+  codigo Int?
+  data   DateTime? @db.Date
+}
+
+model Pessoa {
+  id                  Int          @id @default(autoincrement())
+  email               String       @db.VarChar(100)
+  telefone            Int
+  cpf_cnpj            Int
+  rg                  Int?
+  data_nascimento     DateTime?    @db.Date
+  nome                String?      @db.VarChar(255)
+  nome_fantasia       String?      @db.VarChar(255)
+  estado_civil        String?      @db.VarChar(100)
+  naturalidade        String?      @db.VarChar(100)
+  sexo                String?      @db.VarChar(15)
+  nacionalidade       String?      @db.VarChar(100)
+  local_trabalho      String?      @db.VarChar(255)
+  nome_pai            String?      @db.VarChar(255)
+  nome_mae            String?      @db.VarChar(255)
+  inscricao_estadual  String?      @db.VarChar(255)
+  inscricao_municipal String?      @db.VarChar(255)
+  profissao_id        Int?
+  endereco_id         Int?
+  profissao           Profissao?   @relation(fields: [profissao_id], references: [id])
+  endereco            Endereco?    @relation(fields: [endereco_id], references: [id])
+  cliente             Cliente[]
+  Usuario             Usuario[]
+  Fornecedor          Fornecedor[]
+}
+
+model Profissao {
+  id     Int      @id @default(autoincrement())
+  codigo Int?
+  nome   String?  @db.VarChar(255)
+  pessoa Pessoa[]
+}
+
 model Usuario {
-  id       Int     @id @default(autoincrement())
-  login    String  @unique
-  nome     String?
-  senha    String?
-  entidade String
+  id        Int    @id @default(autoincrement())
+  login     String @unique @db.VarChar(50)
+  senha     String
+  entidade  String @db.VarChar(255)
+  pessoa_id Int
+  pessoa    Pessoa @relation(fields: [pessoa_id], references: [id])
 }
