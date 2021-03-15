@@ -13,7 +13,7 @@ module.exports = {
             datasources: {
                 db: {
                     url:
-                        "postgresql://postgres:postgres@localhost:5432/newT?schema=public",
+                        process.env.DATABASE_URL,
                 },
             },
         });
