@@ -9,6 +9,7 @@ module.exports = {
     },
     async salvar(req, res) {
         const { login, nome, senha } = req.body;
+        console.log("antes conexão");
         const prisma = new PrismaClient({
             datasources: {
                 db: {
@@ -17,6 +18,7 @@ module.exports = {
                 },
             },
         });
+        console.log("depois conexão");
         if (login !== null && login !== "") {
             if (senha === null)
                 return res.status(400).send("Senha Não Digitada");
