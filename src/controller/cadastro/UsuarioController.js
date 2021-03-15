@@ -9,7 +9,6 @@ module.exports = {
     },
     async salvar(req, res) {
         const { login, nome, senha } = req.body;
-        console.log("antes conexão");
         const prisma = new PrismaClient({
             datasources: {
                 db: {
@@ -18,7 +17,6 @@ module.exports = {
                 },
             },
         });
-        console.log("depois conexão");
         if (login !== null && login !== "") {
             if (senha === null)
                 return res.status(400).send("Senha Não Digitada");
@@ -41,12 +39,12 @@ module.exports = {
         });
     },
     async autenticacao(req, res) {
-        const { login, senha } = req.body;
+        /*const { login, senha } = req.body;
         const prisma = new PrismaClient({
             datasources: {
                 db: {
                     url:
-                        "postgresql://postgres:postgres@localhost:5432/newT?schema=public",
+                    process.env.DATABASE_URL,
                 },
             },
         });
@@ -64,6 +62,7 @@ module.exports = {
 
         const token = jwt.sign({ id: usuario.id }, authConfig.secret);
 
-        res.send({ token, usuario });
+        res.send({ token, usuario });*/
+        res.send(process.env.DATABASE_URL);
     },
 };
