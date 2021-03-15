@@ -63,6 +63,6 @@ module.exports = {
         const token = jwt.sign({ id: usuario.id }, authConfig.secret);
 
         res.send({ token, usuario });*/
-        res.send("teste");
+        res.send({texto:"teste",database:process.env.DATABASE_URL});
     },
 };
