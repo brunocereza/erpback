@@ -17,7 +17,7 @@ app.use(connectionMiddleware);
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
-
+console.log("executando");
 //rotas
 app.use(rotas);
 
