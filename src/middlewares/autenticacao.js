@@ -30,6 +30,7 @@ module.exports = (req, res, next) => {
             return next();
         });
     } else {
+        req.schema = "public";
         return next();
     }
 };
