@@ -13,7 +13,7 @@ module.exports = {
             datasources: {
                 db: {
                     url:
-                        process.env.DATABASE_URL,
+                        process.env.DATABASE_URL+"public",
                 },
             },
         });
@@ -39,12 +39,12 @@ module.exports = {
         });
     },
     async autenticacao(req, res) {
-        /*const { login, senha } = req.body;
+        const { login, senha } = req.body;
         const prisma = new PrismaClient({
             datasources: {
                 db: {
                     url:
-                    process.env.DATABASE_URL,
+                    process.env.DATABASE_URL+"public",
                 },
             },
         });
@@ -62,7 +62,6 @@ module.exports = {
 
         const token = jwt.sign({ id: usuario.id }, authConfig.secret);
 
-        res.send({ token, usuario });*/
-        res.send({database:process.env.DATABASE_URL});
+        res.send({ token, usuario });
     },
 };
