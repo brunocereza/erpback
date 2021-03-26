@@ -120,10 +120,11 @@ model Profissao {
 }
 
 model Usuario {
-  id        Int    @id @default(autoincrement())
-  login     String @unique @db.VarChar(50)
-  senha     String
-  entidade  String @db.VarChar(255)
-  pessoa_id Int
-  pessoa    Pessoa @relation(fields: [pessoa_id], references: [id])
+  id           Int    @id @default(autoincrement())
+  login        String @unique @db.VarChar(50)
+  senha        String
+  entidade     String @db.VarChar(255)
+  tipo_usuario String @db.VarChar(255)
+  pessoa_id    Int
+  pessoa       Pessoa @relation(fields: [pessoa_id], references: [id])
 }

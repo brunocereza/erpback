@@ -51,17 +51,37 @@ module.exports = {
         const usuario = await prisma.usuario.findUnique({
             where: { login: login },
         });
-
+        
         if (!usuario)
             return res.status(400).send({ error: "Usuario não encontrado" });
-        if (!(await bcrypt.compare(senha, usuario.senha)))
+        if (!(await bcrypt.compare(senha, usuario.senha))){
+            console.log("Senha Inválida")
             return res.status(400).send({ error: "Senha Inválida" });
+        } 
 
         usuario.senha = undefined;
         usuario.id = undefined;
 
         const token = jwt.sign({ id: usuario.id }, authConfig.secret);
-
+        console.log(usuario);
         res.send({ token, usuario });
+    },
+    async findUM(req, res) {
+        const { login } = req.body;
+        const prisma = new PrismaClient({
+            datasources: {
+                db: {
+                    url:
+                        process.env.DATABASE_URL+"public",
+                },
+            },
+        });
+        await prisma.usuario.findFirst({
+            where: { login: login },
+        }).then((usuario) =>{
+            usuario.senha = undefined;
+            usuario.id = undefined;
+            res.send(usuario);
+        });
     },
 };
