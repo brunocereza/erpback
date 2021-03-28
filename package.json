@@ -7,13 +7,14 @@
   "license": "MIT",
   "dependencies": {
     "@prisma-multi-tenant/client": "2.4.2",
-    "@prisma/client": "^2.18.0",
+    "@prisma/client": "^2.19.0",
     "@types/node": "^14.14.31",
     "babel-node": "^0.0.1-security",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "generate": "^0.14.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.7",
     "ts-node": "^9.1.1",
@@ -21,7 +22,7 @@
   },
   "devDependencies": {
     "@prisma/cli": "^2.18.0",
-    "prisma": "^2.18.0"
+    "prisma": "^2.19.0"
   },
   "scripts": {
     "start": "nodemon server.js"
