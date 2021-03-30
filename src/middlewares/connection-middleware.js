@@ -10,6 +10,6 @@ module.exports = async(req, res, next) => {
       },
     },
   });      
-  req.connetion = prisma; 
+  req.connection = prisma; 
       next();
 };

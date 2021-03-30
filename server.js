@@ -11,7 +11,7 @@ const connectionMiddleware = require("./src/middlewares/connection-middleware");
 app.use(cors());
 
 //autenticação por token
-//app.use(autenticacao);
+app.use(autenticacao);
 app.use(connectionMiddleware);
 
 app.use(express.json());

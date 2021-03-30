@@ -62,7 +62,7 @@ module.exports = {
         usuario.senha = undefined;
         usuario.id = undefined;
 
-        const token = jwt.sign({ id: usuario.id }, authConfig.secret);
+        const token = jwt.sign({ id: usuario.id,schema:usuario.entidade }, authConfig.secret);
         console.log(usuario);
         res.send({ token, usuario });
     },
