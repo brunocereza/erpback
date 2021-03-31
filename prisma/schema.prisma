@@ -30,13 +30,13 @@ model Contas_a_receber {
 
 model Endereco {
   id          Int      @id @default(autoincrement())
-  cep         String?  @db.VarChar(8)
+  cep         String?  @db.VarChar(15)
   logradouro  String?  @db.VarChar(255)
   bairro      String?  @db.VarChar(255)
   numero      String?  @db.VarChar(15)
   complemento String?  @db.VarChar(500)
-  cidade      String?  @db.VarChar(100)
-  estado      String?  @db.VarChar(30)
+  cidade_id      Int? 
+  estado_id      Int?  
   Pessoa      Pessoa[]
 }
 
@@ -88,8 +88,8 @@ model Ordem_Servico {
 model Pessoa {
   id                  Int          @id @default(autoincrement())
   email               String       @db.VarChar(100)
-  telefone            Int
-  cpf_cnpj            Int
+  telefone            String?      @db.VarChar(255)
+  cpf_cnpj            String       @db.VarChar(255)
   rg                  Int?
   data_nascimento     DateTime?    @db.Date
   nome                String?      @db.VarChar(255)
